@@ -1,7 +1,7 @@
 # AI基础设施追踪器 — 数据溯源文档
 
 > **用途**: 后台审核文档，用于逐条核实 `data.js` 中每个数据点的来源、原文引用和可信度  
-> **最后更新**: 2026年4月  
+> **最后更新**: 2026年4月13日  
 > **维护说明**: 修改本文档后，通知开发者同步更新 `data.js` 和前端展示
 
 ---
@@ -147,6 +147,16 @@
 | 字段 | data.js值 | 计算核实 |
 |------|----------|---------|
 | CapEx YoY | 93% | ✅ ($72.2B - $37.3B) / $37.3B = 93.6% ✓ |
+
+### 1.6 2026年4月更新（The Information报道）
+
+**来源**: The Information, "OpenAI Stargate Execs to Join Meta's New Compute Unit", Apr 10, 2026
+- Meta成立 **TBD Lab** AI单元，由前Scale AI CEO **Alexandr Wang** 领导
+- 新设 **Meta Compute** 部门，Santosh Janardhan（全球基础设施）和Daniel Gross（产品VP）直接向Zuckerberg汇报
+- 招揽三名OpenAI Stargate高管（Hoeschele, Hemani, Saharan）加入Meta Compute
+- Nat Friedman任高级AI主管，参与算力战略
+
+> ✅ 已同步更新 data.js keyFacts
 
 ---
 
@@ -430,6 +440,23 @@
 
 - **CoreWeave $22B**: ⚠️ 需要单独核实
 
+### 5.4b 2026年4月更新（The Information报道）
+
+**来源**: The Information, "OpenAI Stargate Leaders Depart in Latest Shakeup to Data Center Strategy", Apr 9, 2026
+
+**关键数据点**:
+- Stargate团队已签约 **8 GW** 容量（短于2025年1月宣布时设定的10 GW目标）
+- OpenAI 2025年底容量约 **1.9 GW**（"same amount of power as two nuclear power plants"）
+- 容量规划：**2026年底 mid-single digit GW，2027年 10+ GW**
+- OpenAI投资者备忘录估计Anthropic 2025年底容量 **1.4 GW**
+- OpenAI估计Anthropic：2026年 **3-4 GW**，2027年底 **7-8 GW**
+- 5年计算支出目标约 **$600B**（与此前keyFacts一致）
+- 战略转向：**从自建数据中心转为租赁算力**
+- **Sachin Katti**（前Intel高管）接任算力负责人
+- 三名高管离职（Hoeschele, Hemani, Saharan）→ 加入Meta Compute
+
+> ✅ 已同步更新 data.js keyFacts
+
 ### 5.5 自研Titan芯片
 
 **原始引用**:
@@ -584,6 +611,23 @@
 - **总融资累计约$61-67B**（非data.js中的$13-15B）
 - **年化收入**: 2026年3月达$30B ARR，同比增长1400%
   - 来源: [Sacra](https://sacra.com/c/anthropic/)
+
+### 8.6 2026年4月更新（The Information报道）
+
+**来源1**: The Information, "CoreWeave Strikes Multi-Year Deal with Anthropic", Apr 10, 2026
+- CoreWeave签署多年期合同为Claude模型提供算力，2026年内首批服务器上线
+- Anthropic ARR跃升至 **$30B**（2025年底$9B）
+- Broadcom/Google 3.5GW容量协议（2027年起）（此前已有来源，再次确认）
+- Anthropic正讨论确保 **10 GW** 总容量
+
+**来源2**: The Information, "Anthropic Considers Designing its Own Chip", Apr 9, 2026 (via Reuters)
+- Anthropic正在探索自研AI芯片，处于早期阶段
+
+**来源3**: The Information, "OpenAI Stargate Leaders Depart", Apr 9, 2026
+- OpenAI投资者备忘录数据：Anthropic 2025年底容量 **1.4 GW**
+- OpenAI估计Anthropic：2026年 3-4 GW，2027年底 7-8 GW
+
+> ✅ 已同步更新 data.js: computeSource.details（+CoreWeave）、partnerships（+CoreWeave）、keyFacts（ARR、容量、自研芯片探索）
 
 ---
 
@@ -852,6 +896,13 @@
 - [CNBC - Anthropic Google $1B](https://www.cnbc.com/2025/01/22/google-agrees-to-new-1-billion-investment-in-anthropic.html)
 - [TechCrunch - Tesla Dojo shutdown](https://techcrunch.com/2025/08/07/tesla-shuts-down-dojo-the-ai-training-supercomputer-that-musk-said-would-be-key-to-full-self-driving/)
 - [CNBC - Apple AI CapEx](https://www.cnbc.com/2025/10/30/apple-isnt-playing-the-same-ai-capex-game-as-the-rest-of-the-megacaps.html)
+
+### The Information（2026年4月，付费文档）
+- OpenAI Stargate Leaders Depart in Latest Shakeup to Data Center Strategy (Apr 9, 2026)
+- Anthropic Considers Designing its Own Chip (Apr 9, 2026, via Reuters)
+- CoreWeave Strikes Multi-Year Deal with Anthropic (Apr 10, 2026)
+- OpenAI Stargate Execs to Join Meta's New Compute Unit (Apr 10, 2026)
+- Google Will Use Intel Chips in Data Centers (Apr 9, 2026)
 
 ### 数据库与分析
 - [Epoch AI GPU Clusters Database](https://epoch.ai/data/gpu-clusters/)

@@ -6,8 +6,8 @@
 
 const AI_INFRA_DATA = {
   meta: {
-    lastUpdated: '2026-04',
-    version: '1.0',
+    lastUpdated: '2026-04-13',
+    version: '1.1',
     h100EquivFactors: {
       'A100': 0.4,
       'H100': 1.0,
@@ -45,7 +45,12 @@ const AI_INFRA_DATA = {
     { id: 'lesswrong-gpu-est', label: 'LessWrong GPU Estimates (JeffTech/community)', type: 'estimated' },
     { id: 'cnbc-capex-2026', label: 'CNBC Big Tech AI CapEx reporting, Feb 2026', type: 'reported' },
     { id: 'dcd-stargate-2025', label: 'Data Center Dynamics Stargate reporting', type: 'reported' },
-    { id: 'openai-oracle-2025', label: 'OpenAI-Oracle Stargate Partnership, Sep 2025', type: 'official' }
+    { id: 'openai-oracle-2025', label: 'OpenAI-Oracle Stargate Partnership, Sep 2025', type: 'official' },
+    { id: 'info-openai-stargate-shakeup-2026', label: 'The Information: OpenAI Stargate Leaders Depart, Apr 2026', type: 'reported' },
+    { id: 'info-coreweave-anthropic-2026', label: 'The Information: CoreWeave Strikes Multi-Year Deal with Anthropic, Apr 2026', type: 'reported' },
+    { id: 'info-anthropic-chip-2026', label: 'The Information: Anthropic Considers Designing its Own Chip, Apr 2026', type: 'reported' },
+    { id: 'info-meta-compute-2026', label: 'The Information: OpenAI Stargate Execs Join Meta Compute Unit, Apr 2026', type: 'reported' },
+    { id: 'info-google-intel-2026', label: 'The Information: Google Will Use Intel Chips in Data Centers, Apr 2026', type: 'reported' }
   ],
 
   companies: [
@@ -111,7 +116,9 @@ const AI_INFRA_DATA = {
         'Zuckerberg确认2024年底拥有约60万H100等效GPU',
         '计划2025-2026年部署超100万GPU',
         '自研MTIA v2芯片专注推理场景',
-        '路易斯安那州在建全球最大AI数据中心（2GW）'
+        '路易斯安那州在建全球最大AI数据中心（2GW）',
+        '2026年4月成立TBD Lab AI单元（Alexandr Wang领导）及Meta Compute部门',
+        '从OpenAI Stargate招揽三名高管充实算力团队'
       ],
       partnerships: ['NVIDIA', 'Broadcom']
     },
@@ -365,9 +372,11 @@ const AI_INFRA_DATA = {
       keyFacts: [
         'Altman宣布2025年底前超100万GPU上线',
         'Stargate项目：与SoftBank/Oracle合建$5000亿数据中心',
-        '仅Abilene站点部署45万GB200 GPU',
-        '2025年底算力容量达1.9GW（同比3倍）',
-        '2030年计算支出目标约$6000亿',
+        'Stargate团队已签约8GW容量（目标10GW未达成）',
+        '2025年底算力容量达1.9GW；计划2026年底mid-single digit GW，2027年10+GW',
+        '5年计算支出目标约$6000亿',
+        '战略转向：从自建数据中心转为租赁算力',
+        'Sachin Katti（前Intel高管）接任算力负责人',
         '自研Titan推理芯片（TSMC 3nm，Broadcom设计）'
       ],
       partnerships: ['Microsoft ($250B Azure)', 'SoftBank/Stargate', 'Oracle ($300B)', 'AWS ($38B)', 'CoreWeave ($22B)', 'NVIDIA ($100B LOI)']
@@ -539,7 +548,7 @@ const AI_INFRA_DATA = {
         selfBuilt_pct: 0,
         cloud_pct: 100,
         leased_pct: 0,
-        details: 'AWS为主要云（Amazon投资$80亿），GCP为辅（Google投资$20亿）',
+        details: 'AWS为主要云（Amazon投资$80亿）+ GCP（Google投资~$37.5亿）+ CoreWeave多年期合同（2026年启用）',
         confidence: 'official'
       },
 
@@ -551,12 +560,16 @@ const AI_INFRA_DATA = {
 
       keyFacts: [
         'Amazon投资$80亿，指定AWS为主要云供应商',
-        'Google投资$20亿，使用GCP TPU训练',
-        '估值约$600亿，总融资$130-150亿',
+        'Google投资~$37.5亿，使用GCP TPU训练；Broadcom/Google 3.5GW容量协议（2027年起）',
+        'CoreWeave签署多年期算力供应合同（2026年内首批服务器上线）',
+        '2025年底算力容量约1.4GW；目标确保10GW容量',
+        'ARR达$300亿（2026年3月），同比增长超200%',
+        '估值$380亿（2026年2月 Series G），总融资~$610-670亿',
+        '正在探索自研AI芯片（早期阶段）',
         '多云多芯片策略：同时使用NVIDIA/TPU/Trainium',
         '无自建数据中心，完全依赖云供应商'
       ],
-      partnerships: ['Amazon/AWS ($8B投资)', 'Google Cloud ($2B投资)']
+      partnerships: ['Amazon/AWS ($8B投资)', 'Google Cloud (~$3.75B投资)', 'CoreWeave (多年期算力合同)']
     },
 
     {
