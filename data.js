@@ -50,7 +50,11 @@ const AI_INFRA_DATA = {
     { id: 'info-coreweave-anthropic-2026', label: 'The Information: CoreWeave Strikes Multi-Year Deal with Anthropic, Apr 2026', type: 'reported' },
     { id: 'info-anthropic-chip-2026', label: 'The Information: Anthropic Considers Designing its Own Chip, Apr 2026', type: 'reported' },
     { id: 'info-meta-compute-2026', label: 'The Information: OpenAI Stargate Execs Join Meta Compute Unit, Apr 2026', type: 'reported' },
-    { id: 'info-google-intel-2026', label: 'The Information: Google Will Use Intel Chips in Data Centers, Apr 2026', type: 'reported' }
+    { id: 'info-google-intel-2026', label: 'The Information: Google Will Use Intel Chips in Data Centers, Apr 2026', type: 'reported' },
+    { id: 'info-amazon-chips-2026', label: 'The Information: Amazon Considers Selling AI Chips Beyond AWS, Apr 2026', type: 'reported' },
+    { id: 'info-meta-coreweave-35b-2026', label: 'The Information: Meta Expands CoreWeave Deals to $35B, Apr 2026', type: 'reported' },
+    { id: 'info-openai-forecasts-2026', label: 'The Information: OpenAI Forecasts and Guesses, Apr 2026', type: 'reported' },
+    { id: 'info-openai-rental-2025', label: 'The Information/量子位: OpenAI 2025-2030 Compute Rental Costs, Oct 2025', type: 'reported' }
   ],
 
   companies: [
@@ -99,11 +103,11 @@ const AI_INFRA_DATA = {
       },
 
       computeSource: {
-        selfBuilt_pct: 100,
+        selfBuilt_pct: 70,
         cloud_pct: 0,
-        leased_pct: 0,
-        details: '全部自建数据中心，路易斯安那州在建2GW超级集群',
-        confidence: 'official'
+        leased_pct: 30,
+        details: '自建为主 + CoreWeave $350亿(至2032) + Nebius $270亿(5年) + GCP $100亿+',
+        confidence: 'reported'
       },
 
       growth: {
@@ -117,10 +121,11 @@ const AI_INFRA_DATA = {
         '计划2025-2026年部署超100万GPU',
         '自研MTIA v2芯片专注推理场景',
         '路易斯安那州在建全球最大AI数据中心（2GW）',
+        '大规模租赁算力：CoreWeave $350亿(至2032) + Nebius $270亿 + GCP $100亿+',
         '2026年4月成立TBD Lab AI单元（Alexandr Wang领导）及Meta Compute部门',
         '从OpenAI Stargate招揽三名高管充实算力团队'
       ],
-      partnerships: ['NVIDIA', 'Broadcom']
+      partnerships: ['NVIDIA', 'Broadcom', 'CoreWeave ($35B)', 'Nebius ($27B)', 'Google Cloud']
     },
 
     {
@@ -308,7 +313,9 @@ const AI_INFRA_DATA = {
 
       keyFacts: [
         '2026年CapEx预计达$2000亿，全球最高',
-        'Trainium自研芯片已迭代至第3代',
+        'Trainium自研芯片已迭代至第3代；芯片业务ARR超$200亿（若直接销售可达$500亿）',
+        '正考虑向第三方直接销售芯片机架（不通过AWS）',
+        'AWS AI收入run rate超$150亿（2026Q1）；AWS年化收入~$1420亿',
         '投资Anthropic $80亿，为其主要云供应商',
         'Project Rainier部署50万Trainium2芯片'
       ],
@@ -341,8 +348,8 @@ const AI_INFRA_DATA = {
         annual: [
           { year: 2023, amount: 2e9, currency: 'USD', confidence: 'estimated', sourceId: 'cnbc-capex-2026' },
           { year: 2024, amount: 5e9, currency: 'USD', confidence: 'reported', sourceId: 'cnbc-capex-2026' },
-          { year: 2025, amount: 8e9, currency: 'USD', confidence: 'reported', sourceId: 'openai-cfo-2026' },
-          { year: 2026, amount: 17e9, currency: 'USD', confidence: 'reported', sourceId: 'cnbc-capex-2026' }
+          { year: 2025, amount: 16e9, currency: 'USD', confidence: 'reported', sourceId: 'info-openai-rental-2025', note: '算力租赁成本口径（推理$7B+训练$9B），非传统CapEx' },
+          { year: 2026, amount: 40e9, currency: 'USD', confidence: 'reported', sourceId: 'info-openai-rental-2025', note: '算力租赁成本（推理$19B+研发$15B+可货币化$6B）' }
         ],
         aiSharePct: 95
       },
@@ -364,20 +371,21 @@ const AI_INFRA_DATA = {
       },
 
       growth: {
-        capexYoY: 60,
+        capexYoY: 150,
         capacityYoY: 200,
         confidence: 'reported'
       },
 
       keyFacts: [
-        'Altman宣布2025年底前超100万GPU上线',
-        'Stargate项目：与SoftBank/Oracle合建$5000亿数据中心',
+        'Altman宣布2025年底前超100万GPU上线；ChatGPT周活跃用户9.2亿',
+        'Stargate项目：与SoftBank/Oracle合建$5000亿，5个数据中心（TX/NM/OH/中西部），总计7GW',
         'Stargate团队已签约8GW容量（目标10GW未达成）',
         '2025年底算力容量达1.9GW；计划2026年底mid-single digit GW，2027年10+GW',
-        '5年计算支出目标约$6000亿',
-        '战略转向：从自建数据中心转为租赁算力',
+        '算力租赁成本：2025年$160亿→2030年$1000亿（6倍增长）；2025-2030累计~$4500亿',
+        '2030年收入预测$2840亿（含广告$1020亿）；2028年为租赁峰值$1110亿',
+        '战略转向：从自建转为租赁算力；NVIDIA $1000亿合作可能为芯片租赁模式',
         'Sachin Katti（前Intel高管）接任算力负责人',
-        '自研Titan推理芯片（TSMC 3nm，Broadcom设计）'
+        '自研Titan推理芯片（TSMC 3nm，Broadcom $100亿订单）'
       ],
       partnerships: ['Microsoft ($250B Azure)', 'SoftBank/Stargate', 'Oracle ($300B)', 'AWS ($38B)', 'CoreWeave ($22B)', 'NVIDIA ($100B LOI)']
     },
@@ -440,7 +448,8 @@ const AI_INFRA_DATA = {
         'Memphis Colossus: 全球最大单体GPU集群之一',
         'Musk目标扩展至55万-100万GPU',
         '训练Grok系列大模型',
-        '未上市，财务数据有限'
+        'CFO Anthony Armstrong已离职；高管持续流失，联合创始人（除Musk外）已全部离开',
+        '正逐步被SpaceX吸收；未上市，财务数据有限'
       ],
       partnerships: ['NVIDIA', 'Oracle Cloud']
     },

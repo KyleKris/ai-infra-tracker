@@ -150,13 +150,19 @@
 
 ### 1.6 2026年4月更新（The Information报道）
 
-**来源**: The Information, "OpenAI Stargate Execs to Join Meta's New Compute Unit", Apr 10, 2026
+**来源1**: The Information, "Meta Expands Cloud Deals With CoreWeave to $35 Billion through 2032", Apr 9, 2026
+- Meta与CoreWeave新增 **$210亿** 合同（2027-2032），加此前$140亿，总计 **$350亿**
+- CoreWeave SEC文件：合同取决于"satisfaction of delivery and availability of service requirements"
+- 此前已签Nebius **$270亿**（5年）
+- 2026年CapEx计划 **最高$1350亿**
+
+**来源2**: The Information, "OpenAI Stargate Execs to Join Meta's New Compute Unit", Apr 10, 2026
 - Meta成立 **TBD Lab** AI单元，由前Scale AI CEO **Alexandr Wang** 领导
 - 新设 **Meta Compute** 部门，Santosh Janardhan（全球基础设施）和Daniel Gross（产品VP）直接向Zuckerberg汇报
 - 招揽三名OpenAI Stargate高管（Hoeschele, Hemani, Saharan）加入Meta Compute
 - Nat Friedman任高级AI主管，参与算力战略
 
-> ✅ 已同步更新 data.js keyFacts
+> ✅ 已同步更新 data.js: computeSource从100%自建修正为70%自建/30%租赁，partnerships新增CoreWeave/Nebius/GCP
 
 ---
 
@@ -374,6 +380,17 @@
 |------|----------|---------|
 | CapEx YoY | 59% | ✅ ($131.8B - $83B) / $83B = 58.8% ≈ 59% ✓ |
 
+### 4.5 2026年4月更新
+
+**来源**: The Information, "Amazon Considers Selling AI Chips Beyond AWS", Apr 9, 2026
+- Amazon芯片业务ARR突破 **$200亿**（Jassy股东信，较2月的$100亿翻倍）
+- 若直接向第三方销售芯片，run rate可达 **$500亿**
+- CEO Jassy表示"quite possible"未来会直接向第三方出售芯片机架
+- AWS AI收入run rate超 **$150亿**（2026Q1）
+- AWS年化收入约 **$1420亿**
+
+> ✅ 已同步更新 data.js keyFacts
+
 ---
 
 ## 5. OpenAI
@@ -468,6 +485,37 @@
 
 > ✅ Titan芯片信息与data.js keyFacts一致
 
+### 5.6 算力租赁成本预测（2025-2030）
+
+**来源**: The Information (via 量子位), ~Oct 2025; Peter Gostev 整理
+
+| 年度 | 推理 | 研发 | 可货币化 | **总计** |
+|------|------|------|---------|---------|
+| 2025 | $70亿 | $90亿 | — | **$160亿** |
+| 2026 | $190亿 | $150亿 | $60亿 | **$400亿** |
+| 2027 | $200亿 | $310亿 | $180亿 | **$690亿** |
+| 2028 | $290亿 | $400亿 | $420亿 | **$1110亿**（峰值） |
+| 2029 | $390亿 | $420亿 | $270亿 | **$1080亿** |
+| 2030 | $500亿 | $500亿 | $50亿 | **$1050亿** |
+
+- 2025-2030累计约 **$4500亿** 租赁服务器
+- 推理CAGR 48%，训练CAGR 41%
+- NVIDIA $1000亿合作可能为芯片租赁模式（2025年9月报道）
+
+> ⚠️ **审核要点**: data.js CapEx此前使用$8B/2025，实为CFO Sarah Friar口径。The Information的$16B是"算力租赁成本"口径，更全面。已更新data.js采用$16B/$40B并标注口径差异。
+
+### 5.7 收入预测与广告（2026年4月）
+
+**来源**: The Information, "OpenAI, Forecasts and Guesses", Apr 9, 2026
+
+- OpenAI 2025年收入 **$130亿**；2030年预测 **$2840亿**
+- ChatGPT广告收入：2026年 $24亿 → 2027年 $110亿 → 2030年 **$1020亿**
+  - 分析师（MoffettNathanson）认为路径"比预期更崎岖更慢"
+- ChatGPT周活跃用户 **9.2亿**
+- 2026年2月起测试广告
+
+> ✅ 已同步更新 data.js keyFacts
+
 ---
 
 ## 6. xAI
@@ -508,6 +556,16 @@
 
 - 扩展至555K GPU花费约$18B（来源: Introl Blog）
 - xAI未上市，无财报数据
+
+### 6.3 2026年4月更新
+
+**来源**: The Information, "OpenAI, Forecasts and Guesses", Apr 9, 2026
+- CFO **Anthony Armstrong** 已离职，为"高管离职潮"一部分
+- 除Musk外所有联合创始人已离开
+- xAI正被 **SpaceX** 吸收；Armstrong最后向SpaceX CFO汇报
+- 分析师质疑：若Musk专注SpaceX上市和轨道数据中心概念，xAI是否会逐步消亡
+
+> ✅ 已同步更新 data.js keyFacts
 
 ---
 
@@ -903,6 +961,12 @@
 - CoreWeave Strikes Multi-Year Deal with Anthropic (Apr 10, 2026)
 - OpenAI Stargate Execs to Join Meta's New Compute Unit (Apr 10, 2026)
 - Google Will Use Intel Chips in Data Centers (Apr 9, 2026)
+- Amazon Considers Selling AI Chips Beyond AWS (Apr 9, 2026)
+- Meta Expands Cloud Deals With CoreWeave to $35 Billion through 2032 (Apr 9, 2026)
+- OpenAI, Forecasts and Guesses — Newsletter (Apr 9, 2026)
+
+### 其他媒体（中文）
+- 量子位: OpenAI算力租赁成本2025-2030预测 (~Oct 2025, 引用The Information数据)
 
 ### 数据库与分析
 - [Epoch AI GPU Clusters Database](https://epoch.ai/data/gpu-clusters/)
