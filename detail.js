@@ -1,10 +1,12 @@
 /* ============================================
-   Detail — Company detail modal
-   Click a treemap block → full data view
+   Detail — Company detail page (webpage-style)
+   Click a company → full page view with URL routing
    ============================================ */
 
 const Detail = (function () {
-  let overlay = null;
+  let page = null;
+  let dashboardEls = null; // references to hidden dashboard elements
+  let currentCompanyId = null;
 
   const FLAGS = { US: '\ud83c\uddfa\ud83c\uddf8', CN: '\ud83c\udde8\ud83c\uddf3' };
   const COUNTRY_CN = { US: '美国', CN: '中国' };
@@ -51,36 +53,96 @@ const Detail = (function () {
     return '<span class="dt-conf">' + dots + ' ' + (labels[level] || level) + '</span>';
   }
 
-  // --- Create overlay once ---
-  function ensureOverlay() {
-    if (overlay) return;
-    overlay = document.createElement('div');
-    overlay.id = 'detail-overlay';
-    overlay.addEventListener('click', function (e) {
-      if (e.target === overlay) hide();
+  // --- Create page container once ---
+  function ensurePage() {
+    if (page) return;
+    page = document.createElement('section');
+    page.id = 'detail-page';
+    page.style.display = 'none';
+    // Insert into #app, before #footer
+    var app = document.getElementById('app');
+    var footer = document.getElementById('footer');
+    if (app && footer) {
+      app.insertBefore(page, footer);
+    } else {
+      document.body.appendChild(page);
+    }
+
+    // Cache dashboard elements that get hidden when detail page is shown
+    dashboardEls = [
+      document.getElementById('controls'),
+      document.getElementById('legend'),
+      document.getElementById('company-tags'),
+      document.getElementById('main')
+    ].filter(function (el) { return el; });
+
+    // Handle browser back/forward
+    window.addEventListener('popstate', function (e) {
+      syncFromHash();
     });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') hide();
-    });
-    document.body.appendChild(overlay);
   }
 
-  // --- Show ---
+  function getCompanyIdFromHash() {
+    var m = /^#\/company\/([a-z0-9_-]+)/i.exec(window.location.hash || '');
+    return m ? m[1] : null;
+  }
+
+  function syncFromHash() {
+    var id = getCompanyIdFromHash();
+    if (id) {
+      var co = (typeof AI_INFRA_DATA !== 'undefined') &&
+        AI_INFRA_DATA.companies.find(function (c) { return c.id === id; });
+      if (co) {
+        renderPage(co);
+        return;
+      }
+    }
+    renderDashboard();
+  }
+
+  function renderPage(company) {
+    ensurePage();
+    currentCompanyId = company.id;
+    page.innerHTML = '<div class="dt-page-inner">' + buildHTML(company) + '</div>';
+    // Hide dashboard
+    dashboardEls.forEach(function (el) { el.style.display = 'none'; });
+    page.style.display = 'block';
+    // Wire back button
+    var back = page.querySelector('.dt-back');
+    if (back) back.addEventListener('click', hide);
+    window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+  }
+
+  function renderDashboard() {
+    if (page) page.style.display = 'none';
+    if (dashboardEls) dashboardEls.forEach(function (el) { el.style.display = ''; });
+    currentCompanyId = null;
+  }
+
+  // --- Show: navigate to company page ---
   function show(company) {
-    ensureOverlay();
-    overlay.innerHTML = '<div class="dt-card">' + buildHTML(company) + '</div>';
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-
-    // Close button
-    overlay.querySelector('.dt-close').addEventListener('click', hide);
+    if (!company) return;
+    // Push URL hash so it's bookmarkable + back button works
+    var targetHash = '#/company/' + company.id;
+    if (window.location.hash !== targetHash) {
+      history.pushState({ company: company.id }, '', targetHash);
+    }
+    renderPage(company);
   }
 
-  // --- Hide ---
+  // --- Hide: back to dashboard ---
   function hide() {
-    if (!overlay) return;
-    overlay.classList.remove('active');
-    document.body.style.overflow = '';
+    if (window.location.hash) {
+      // Use back() if hash was pushed by show(), else manual clear
+      history.pushState({}, '', window.location.pathname + window.location.search);
+    }
+    renderDashboard();
+  }
+
+  // --- Init: check URL hash on page load ---
+  function init() {
+    ensurePage();
+    syncFromHash();
   }
 
   // --- Build full detail HTML ---
@@ -91,8 +153,12 @@ const Detail = (function () {
 
     let h = '';
 
+    // Back navigation
+    h += '<button class="dt-back" aria-label="返回">';
+    h += '<span class="dt-back-arrow">\u2190</span> 返回总览';
+    h += '</button>';
+
     // Header
-    h += '<button class="dt-close" aria-label="关闭">&times;</button>';
     h += '<div class="dt-header">';
     h += '  <h2 class="dt-company-name" style="border-left:4px solid ' + co.color + ';padding-left:12px">' + (co.nameCN || co.name) + '</h2>';
     h += '  <div class="dt-meta">';
@@ -330,5 +396,5 @@ const Detail = (function () {
       '</div>';
   }
 
-  return { show, hide };
+  return { show, hide, init };
 })();

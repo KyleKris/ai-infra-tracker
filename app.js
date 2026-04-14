@@ -468,6 +468,11 @@
     if (typeof Sankey !== 'undefined' && Sankey.init) {
       Sankey.init(AI_INFRA_DATA);
     }
+
+    // Detail page routing — check URL hash on load (supports bookmarks/shared links)
+    if (typeof Detail !== 'undefined' && Detail.init) {
+      Detail.init();
+    }
   }
 
   if (document.readyState === 'loading') {

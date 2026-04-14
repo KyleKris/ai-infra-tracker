@@ -718,63 +718,49 @@ body {
   border-radius: 3px;
 }
 
-/* --- Detail Modal --- */
-#detail-overlay {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.75);
-  z-index: 2000;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 40px 20px;
-  overflow-y: auto;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
+/* --- Detail Page (webpage-style, replaces dashboard) --- */
+#detail-page {
+  padding: 32px 0;
+  animation: dtFadeIn 0.2s ease;
 }
 
-#detail-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.dt-card {
-  background: var(--bg2);
-  border: 1px solid var(--border-hover);
-  border-radius: 16px;
-  max-width: 720px;
-  width: 100%;
-  padding: 32px;
-  position: relative;
-  animation: dtSlideUp 0.25s ease;
-}
-
-@keyframes dtSlideUp {
-  from { opacity: 0; transform: translateY(24px); }
+@keyframes dtFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.dt-close {
-  position: absolute;
-  top: 16px;
-  right: 20px;
-  background: none;
-  border: none;
-  color: var(--fg3);
-  font-size: 28px;
-  cursor: pointer;
-  line-height: 1;
-  padding: 4px 8px;
-  border-radius: 6px;
-  transition: all 0.15s;
+.dt-page-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
 }
 
-.dt-close:hover {
-  background: rgba(255,255,255,0.08);
+.dt-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--fg2);
+  font-size: 13px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 24px;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.dt-back:hover {
+  background: var(--bg3, rgba(255,255,255,0.04));
+  border-color: var(--border-hover);
   color: var(--fg);
+}
+
+.dt-back-arrow {
+  font-size: 16px;
+  line-height: 1;
 }
 
 .dt-header {
@@ -1111,15 +1097,14 @@ body {
   color: var(--fg3);
 }
 
-/* Detail modal responsive */
+/* Detail page responsive */
 @media (max-width: 768px) {
-  #detail-overlay {
-    padding: 20px 12px;
+  #detail-page {
+    padding: 16px 0;
   }
 
-  .dt-card {
-    padding: 20px;
-    border-radius: 12px;
+  .dt-page-inner {
+    padding: 0 16px;
   }
 
   .dt-company-name {
